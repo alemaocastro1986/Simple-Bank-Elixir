@@ -16,8 +16,10 @@ defmodule Transaction do
     File.write(@transactions, binary)
   end
 
+  @spec get_all :: list
   def get_all(), do: get_trasactions()
 
+  @spec get_all(String.t()) :: list
   def get_all(filter) do
     transactions = get_trasactions()
     Enum.filter(transactions, fn x -> x.from == filter || x.to == filter end)
